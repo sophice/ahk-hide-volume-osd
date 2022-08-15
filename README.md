@@ -20,6 +20,7 @@ Note: This is not permanent, it will only apply until you reboot your system. Ev
 # Known issues
 
 - Must be run every time you reboot, cannot permanently hide the volume osd.
+- Only tested on Windows 10, please let me know if it works in Windows 8 and 11.
 
 # Potential future improvements
 
