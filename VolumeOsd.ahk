@@ -25,6 +25,10 @@ class VolumeOsd
 
     Find()
     {
+        ; // turn volume up and down to show OSD on the screen and get handler generated
+        Send, {Volume_Up}
+        Send, {Volume_Down}
+
         result := 0
         count := 0
         parentHandle := 0
