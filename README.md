@@ -20,4 +20,4 @@ Running install.ahk creates a scheduled task to run hide-volume-osd.ahk every ti
 
 # Credits
 
-The technique used by this script to find and toggle the volume osd was discovered by [UnlimitedStack/HideVolumeOSD](https://github.com/UnlimitedStack/HideVolumeOSD).
+The technique used by this script to find and toggle the volume OSD was discovered by [UnlimitedStack/HideVolumeOSD](https://github.com/UnlimitedStack/HideVolumeOSD).
