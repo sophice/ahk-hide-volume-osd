@@ -1,8 +1,6 @@
 #include %A_ScriptDir%\VolumeOsd.ahk
 
-if(!VolumeOsd.Exists())
+if(!VolumeOsd.Show())
 {
-    MsgBox, "Error: Could not find volume OSD"
-} else {
-    VolumeOsd.Show()
+    MsgBox, Error: Could not find volume OSD
 }

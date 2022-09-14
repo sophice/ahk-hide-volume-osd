@@ -1,26 +1,29 @@
 class VolumeOsd
 {
-    Exists()
-    {
-        return this.Find() != 0
-    }
-
     Hide()
     {
         handle := this.Find()
-        if(handle != 0)
+
+        if(handle = 0)
         {
-            DllCall("ShowWindow", "UInt", handle, "Int", "6")
+            return false
         }
+
+        DllCall("ShowWindow", "UInt", handle, "Int", "6")
+        return true
     }
 
     Show()
     {
         handle := this.Find()
-        if(handle != 0)
+
+        if(handle = 0)
         {
-            DllCall("ShowWindow", "UInt", handle, "Int", "9")
+            return false
         }
+
+        DllCall("ShowWindow", "UInt", handle, "Int", "9")
+        return true
     }
 
     Find()
