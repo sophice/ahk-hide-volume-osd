@@ -14,9 +14,9 @@ Not any more!
 2) Download [all files](https://github.com/sophice/ahk-hide-volume-osd/archive/refs/heads/main.zip) from this repo and extract/place them where you want.
 3) Run hide-volume-osd.ahk to hide the volume OSD.
 4) Run show-volume-osd.ahk to restore the volume OSD.
-5) Optionally, run install.ahk to permanently hide the volume OSD.
+5) Optionally, run install.ahk to "permanently" hide the volume OSD.
 
-Running install.ahk creatse a scheduled task to run hide-volume-osd.ahk every time you log in to Windows. If you change your mind later, just run uninstall.ahk to delete the scheduled task.
+Running install.ahk creates a scheduled task to run hide-volume-osd.ahk every time you log in to Windows. If you change your mind later, just run uninstall.ahk to delete the scheduled task.
 
 # Credits
 
