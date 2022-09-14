@@ -12,20 +12,11 @@ Not any more!
 
 1) Install [AutoHotkey](https://www.autohotkey.com/) version 1.x in order to run .ahk scripts. Not tested with AutoHotkey version 2.
 2) Download [all files](https://github.com/sophice/ahk-hide-volume-osd/archive/refs/heads/main.zip) from this repo and extract/place them where you want.
-3) Run hide-volume-osd.ahk to hide the volume osd.
-4) Run show-volume-osd.ahk to restore the volume osd.
+3) Run hide-volume-osd.ahk to hide the volume OSD.
+4) Run show-volume-osd.ahk to restore the volume OSD.
+5) Optionally, run install.ahk to permanently hide the volume OSD.
 
-Note: This is not permanent, it will only apply until you restart Windows. Every time you reboot, you will have to run this again to hide the volume osd.
-
-# Known issues
-
-- Must be run every time you reboot, cannot permanently hide the volume osd.
-- Only tested on Windows 10, please let me know if it works on Windows 8 and 11.
-
-# Potential future improvements
-
-- Tray icon version, with menus to toggle the volume osd on/off.
-- Ability to install itself to automatically run on startup.
+Running install.ahk creatse a scheduled task to run hide-volume-osd.ahk every time you log in to Windows. If you change your mind later, just run uninstall.ahk to delete the scheduled task.
 
 # Credits
 
