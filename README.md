@@ -1,6 +1,6 @@
 # AutoHotkey Hide Volume OSD
 
-This is an AutoHotkey script you can use to hide (and restore) the Windows volume osd (on-screen display).
+This is an AutoHotkey script you can use to hide (and restore) the Windows volume OSD (on-screen display).
 
 Whenever you adjust the volume in Windows, a volume level display appears at the top left, sometimes with a large media summary of a video you are watching. This covers up a portion of the screen for several seconds and can be really bothersome while working.
 
