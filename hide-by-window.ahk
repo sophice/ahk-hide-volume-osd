@@ -6,12 +6,13 @@ exeNames := ["phpstorm64.exe"]
 
 #include %A_ScriptDir%\VolumeOsd.ahk
 
+;create a shell hook to track whenever the active window changes
 Gui +LastFound
 DllCall("RegisterShellHookWindow", UInt, WinExist())
 MsgNum := DllCall("RegisterWindowMessage", Str, "SHELLHOOK")
 OnMessage(MsgNum, "ShellMessage")
 
-;if we want it hidden by default, hide it immediately
+;if we want it hidden by default, hide it now
 if(hideByDefault)
 {
     VolumeOsd.Hide()
@@ -22,14 +23,19 @@ ShellMessage(wParam, lParam)
     global hideByDefault
     global exeNames
 
-    ;check for HSHELL_WINDOWACTIVATED or HSHELL_RUDEAPPACTIVATED
+    ;check for HSHELL_WINDOWACTIVATED or HSHELL_RUDEAPPACTIVATED (which is used when there is a full screen window)
     if(wParam = 4 or wParam = 32772)
     {
-        WinGetTitle, title, ahk_id %lParam%
+        ;get the executable filename of the active window
         WinGet, name, ProcessName, A
-        WinGet, path, ProcessPath, A
 
-        ;MsgBox % title . " = " . name . " = " . path
+        ;get the executable path and filename of the active window
+        ;WinGet, path, ProcessPath, A
+
+        ;get the title of the active window
+        ;WinGetTitle, title, ahk_id %lParam%
+
+        ;check whether or not the active Window's executable filename is in the match list
         if(InArray(exeNames, name))
         {
             if(hideByDefault)
