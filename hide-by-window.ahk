@@ -57,18 +57,18 @@ ShellMessage(wParam, lParam)
 
 InArray(haystack, needle)
 {
-	if(!IsObject(haystack) || haystack.Length() = 0)
-	{
-		return false
+    if(!IsObject(haystack) || haystack.Length() = 0)
+    {
+        return false
     }
 
-	for index, value in haystack
-	{
-		if (value = needle)
-		{
-			return true
+    for index, value in haystack
+    {
+        if (value = needle)
+        {
+            return true
         }
-	}
+    }
 
-	return false
+    return false
 }
