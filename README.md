@@ -15,9 +15,9 @@ Not any more!
 
 From here, there are three ways to run this script.
 
-1) Run hide-volume-osd.ahk and show-volume-osd.ahk to hide and show it respectively. Use this to manually turn it on/off when you want, or just to test things out. The volume OSD will only remain hidden until you restart Windows again, so you will have to run hide-volume-osd.ahk after every restart.
-2) Run install.ahk to have Windows automatically run hide-volume-osd.ahk after every restart, so it's always hidden. Run uninstall.ahk to undo this.
-3) **Advanced users**: Run hide-by-window.ahk to only show or only hide the volume OSD in certain windows. You can edit the script and modify the "hideByDefault" and "exeNames" variables to control this behavior.
+1) Run `hide-volume-osd.ahk` and `show-volume-osd.ahk` to hide and show the volume OSD. Use this to manually turn it on/off when you want, or just to test things out. The volume OSD will only remain hidden until you restart Windows again, so you will have to run `hide-volume-osd.ahk` after every restart.
+2) Run `install.ahk` to have Windows automatically run `hide-volume-osd.ahk` after every restart, so it's always hidden. Run `uninstall.ahk` to undo this.
+3) **Advanced users**: Run `hide-by-window.ahk` to only show or only hide the volume OSD in certain windows. You can edit the script and modify the `hideByDefault` and `exeNames` variables to control this behavior.
 
 # Credits
 
