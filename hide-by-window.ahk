@@ -12,10 +12,12 @@ DllCall("RegisterShellHookWindow", UInt, WinExist())
 MsgNum := DllCall("RegisterWindowMessage", Str, "SHELLHOOK")
 OnMessage(MsgNum, "ShellMessage")
 
-;if we want it hidden by default, hide it now
+;immediately show or hide the volume OSD based on the user's choice
 if(hideByDefault)
 {
     VolumeOsd.Hide()
+} else {
+    VolumeOsd.Show()
 }
 
 ShellMessage(wParam, lParam)
@@ -23,7 +25,7 @@ ShellMessage(wParam, lParam)
     global hideByDefault
     global exeNames
 
-    ;check for HSHELL_WINDOWACTIVATED or HSHELL_RUDEAPPACTIVATED (which is used when there is a full screen window)
+    ;check for HSHELL_WINDOWACTIVATED (4) or HSHELL_RUDEAPPACTIVATED (32772, used when there is a full screen window)
     if(wParam = 4 or wParam = 32772)
     {
         ;get the executable filename of the active window
