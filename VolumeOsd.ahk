@@ -1,41 +1,85 @@
 class VolumeOsd
 {
-    Hide()
+    Exists()
     {
-        handle := this.Find()
+        return this.Handle() != 0
+    }
 
-        if(handle = 0)
+    IsHidden()
+    {
+        if(!this.Exists())
         {
             return false
         }
 
-        DllCall("ShowWindow", "UInt", handle, "Int", "6")
+        ;get the window's ShowWindow setting
+        VarSetCapacity(wp, 44)
+        NumPut(44, wp)
+        DllCall("GetWindowPlacement", "UInt", this.Handle(), "UInt", &wp)
+        state := NumGet(WP, 8, "UInt")
+
+        ;2 = SW_SHOWMINIMIZED, we're checking if it's minimized or not
+        return state = 2
+    }
+
+    Hide()
+    {
+        if(!this.Exists())
+        {
+            return false
+        }
+
+        if(this.IsHidden())
+        {
+            return true
+        }
+
+        ;6 = SW_MINIMIZE, we're minimizing the volume OSD window
+        DllCall("ShowWindow", "UInt", this.Handle(), "Int", 6)
         return true
     }
 
     Show()
     {
-        handle := this.Find()
-
-        if(handle = 0)
+        if(!this.Exists())
         {
             return false
         }
 
-        DllCall("ShowWindow", "UInt", handle, "Int", "9")
+        if(!this.IsHidden())
+        {
+            return true
+        }
+
+        ;9 = SW_RESTORE, we're un-minimizing it
+        DllCall("ShowWindow", "UInt", this.Handle(), "Int", 9)
+
+        ;0 = SW_HIDE, this immediately "hides" it, because otherwise it will be displayed but invisible, blocking
+        ;   clicks. we restore it, then hide it, so it won't interfere with the mouse, but next time the volume is
+        ;   adjusted it will reappear like normal. there may be a better solution here, but this works ok.
+        DllCall("ShowWindow", "UInt", this.Handle(), "Int", 0)
+
         return true
     }
 
-    Find()
+    Handle()
     {
         ;the handle for the volume OSD window, if we find it
-        result := 0
+        static result := 0
 
+        ;we previously did the searching already, so just return the handle we found
+        if(result != 0)
+        {
+            return result
+        }
+
+        ;we will try 10 times, with increasing sleep delays between each attempt, to give the volume OSD time to be
+        ;   created during logon
         loop 10
         {
             loop
             {
-                ;find the parent window (hopefully the Volume OSD window)
+                ;find the parent window (hopefully the volume OSD window)
                 parentHandle := DllCall("FindWindowEx", "uint", 0, "uint", parentHandle, "str", "NativeHWNDHost", "uint", 0)
 
                 ;if there are no more matching windows, stop the loop
@@ -71,6 +115,7 @@ class VolumeOsd
                 Send, {Volume_Up}
                 Send, {Volume_Down}
             } else {
+                ;we found the window! stop looping
                 break
             }
         }
